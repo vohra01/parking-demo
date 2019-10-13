@@ -25,12 +25,12 @@ Test for ui is not written due to time constraint.
 
 ### Screenshots 
 
-![alt text](/images/Screen Shot 2019-10-13 at 9.37.15 PM.png)
+![alt text](./images/Screen Shot 2019-10-13 at 9.37.15 PM.png)
 
-![alt text](/images/Screen Shot 2019-10-13 at 9.37.32 PM.png.png)
+![alt text](./images/Screen Shot 2019-10-13 at 9.37.32 PM.png)
 
-![alt text](/images/Screen Shot 2019-10-13 at 9.37.53 PM.png.png)
+![alt text](./images/Screen Shot 2019-10-13 at 9.37.53 PM.png)
 
-![alt text](/images/Screen Shot 2019-10-13 at 9.38.24 PM.png)
+![alt text](./images/Screen Shot 2019-10-13 at 9.38.24 PM.png)
 
-![alt text](/images/Screen Shot 2019-10-13 at 10.39.30 PM.png)
+![alt text](./images/Screen Shot 2019-10-13 at 10.39.30 PM.png)
