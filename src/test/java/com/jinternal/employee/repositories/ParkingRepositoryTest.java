@@ -45,7 +45,7 @@ public class ParkingRepositoryTest {
         assertThat(found.getFirstName()).isEqualTo(employee.getFirstName());
         assertThat(found.getLastName()).isEqualTo(employee.getLastName());
         assertThat(found.getGender()).isEqualTo(employee.getGender());
-        assertThat(found.getDepartment()).isEqualTo(employee.getDepartment());
+        assertThat(found.getCompany()).isEqualTo(employee.getCompany());
         assertThat(found.getDateOfBirth()).isEqualTo(employee.getDateOfBirth());
     }
 

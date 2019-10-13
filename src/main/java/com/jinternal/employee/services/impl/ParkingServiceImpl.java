@@ -4,6 +4,7 @@ import com.jinternal.employee.entities.Employee;
 import com.jinternal.employee.exception.ServiceException;
 import com.jinternal.employee.repositories.ParkingRepository;
 import com.jinternal.employee.services.ParkingService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +15,7 @@ import java.util.Optional;
 import static com.google.common.collect.Iterators.size;
 
 @Service
+@Slf4j
 public class ParkingServiceImpl implements ParkingService {
 
     private final Integer totalParkingAvailable = 6;
@@ -87,6 +89,13 @@ public class ParkingServiceImpl implements ParkingService {
         return "Walk Straight!!! Your car is at pillar no " + id;
     }
 
+    @Override
+    public Employee getEmployeeByUser(Long id) {
+        log.info("Searching employee for id {}", id);
+        return parkingRepository.findOne(id);
+    }
+
+    @Override
     public Employee saveMyCar(Employee employee) {
         int size = size(parkingRepository.findAll().iterator());
         if (size >= totalParkingAvailable) {

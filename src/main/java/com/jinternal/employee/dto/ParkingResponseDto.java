@@ -24,7 +24,7 @@ public class ParkingResponseDto {
 
     private String gender;
 
-    private String department;
+    private String company;
 
     private LocalDate dateOfBirth;
 
@@ -44,7 +44,7 @@ public class ParkingResponseDto {
                 .withFirstName(parkingResponseDto.firstName)
                 .withLastName(parkingResponseDto.lastName)
                 .withGender(Gender.valueOf(parkingResponseDto.gender))
-                .withDepartment(parkingResponseDto.department)
+                .withDepartment(parkingResponseDto.company)
                 .withSize(parkingResponseDto.size)
                 .withForHandicap(parkingResponseDto.isForHandicap)
                 .withLicensePlate(parkingResponseDto.licensePlate)
@@ -59,7 +59,7 @@ public class ParkingResponseDto {
         parkingResponseDto.setId(employee.getId());
         parkingResponseDto.setFirstName(employee.getFirstName());
         parkingResponseDto.setLastName(employee.getLastName());
-        parkingResponseDto.setDepartment(employee.getDepartment());
+        parkingResponseDto.setCompany(employee.getCompany());
         parkingResponseDto.setDateOfBirth(employee.getDateOfBirth());
         parkingResponseDto.setGender(employee.getGender().toString());
         parkingResponseDto.setSize(employee.getSize());

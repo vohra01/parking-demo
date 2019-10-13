@@ -4,7 +4,7 @@ interface Employee {
   lastName: string;
   gender: string;
   dateOfBirth: string;
-  department: string;
+  company: string;
   size: string;
   licensePlate: string;
   type: string;

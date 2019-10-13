@@ -23,7 +23,7 @@ export class EmployeeRegisterComponent   {
       'type': ['',Validators.compose([Validators.required])],
       'size': ['',Validators.compose([Validators.required])],
       'licensePlate': ['',Validators.compose([Validators.pattern('^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$')])],
-      'department': ['',Validators.compose([Validators.required])],
+      'company': ['',Validators.compose([Validators.required])],
       'forHandicap': ['false',Validators.compose([])],
       'dateOfBirth': ['',Validators.compose([ Validators.required,
                                                         Validators.pattern('^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3})$'),
@@ -36,7 +36,7 @@ export class EmployeeRegisterComponent   {
   get firstName() { return this.employeeForm.get('firstName'); }
   get lastName() { return this.employeeForm.get('lastName'); }
   get gender() { return this.employeeForm.get('gender'); }
-  get department() { return this.employeeForm.get('department'); }
+  get company() { return this.employeeForm.get('company'); }
   get dateOfBirth() { return this.employeeForm.get('dateOfBirth'); }
   get size() { return this.employeeForm.get('size'); }
   get type() { return this.employeeForm.get('type'); }

@@ -36,7 +36,7 @@ public class EmployeeRequestDto {
     private String gender;
 
     @NotEmpty
-    private String department;
+    private String company;
 
     @NotNull
     private String dateOfBirth;
@@ -57,7 +57,7 @@ public class EmployeeRequestDto {
                 .withFirstName(requestDto.firstName)
                 .withLastName(requestDto.lastName)
                 .withGender(com.jinternal.employee.entities.Gender.valueOf(requestDto.gender))
-                .withDepartment(requestDto.department)
+                .withDepartment(requestDto.company)
                 .withDateOfBirth(parse(requestDto.dateOfBirth, DATE_FORMATTER))
                 .withSize(com.jinternal.employee.enums.enums.Size.valueOf(requestDto.size))
                 .withForHandicap(requestDto.isForHandicap)
@@ -72,7 +72,7 @@ public class EmployeeRequestDto {
         EmployeeRequestDto employeeRequestDto = new EmployeeRequestDto();
         employeeRequestDto.setFirstName(employee.getFirstName());
         employeeRequestDto.setLastName(employee.getLastName());
-        employeeRequestDto.setDepartment(employee.getDepartment());
+        employeeRequestDto.setCompany(employee.getCompany());
         employeeRequestDto.setDateOfBirth(employee.getDateOfBirth().format(DATE_FORMATTER));
         employeeRequestDto.setGender(employee.getGender().toString());
         employeeRequestDto.setSize(employee.getSize().name());

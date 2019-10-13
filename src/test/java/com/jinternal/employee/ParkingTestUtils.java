@@ -24,7 +24,7 @@ public class ParkingTestUtils {
                 .withFirstName(firstName)
                 .withLastName(lastName)
                 .withGender(Gender.MALE)
-                .withDepartment("Some-department")
+                .withDepartment("Some-company")
                 .withDateOfBirth(now().minusYears(29))
                 .withSize(Size.MEDIUM)
                 .withType(VehicleType.CAR)

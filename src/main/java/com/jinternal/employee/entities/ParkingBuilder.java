@@ -10,14 +10,10 @@ public class ParkingBuilder {
     private String firstName;
     private String lastName;
     private Gender gender;
-    private String department;
+    private String company;
     private LocalDate dateOfBirth;
-
     private Size size;
     private boolean isForHandicap;
-
-    // Vehicle Info
-
     private String licensePlate;
     private VehicleType type;
 
@@ -36,8 +32,8 @@ public class ParkingBuilder {
         return this;
     }
 
-    public ParkingBuilder withDepartment(String department) {
-        this.department = department;
+    public ParkingBuilder withDepartment(String company) {
+        this.company = company;
         return this;
     }
 
@@ -67,7 +63,7 @@ public class ParkingBuilder {
     }
 
     public Employee build() {
-        return new Employee(firstName, lastName, gender, department, dateOfBirth, size, isForHandicap, licensePlate, type);
+        return new Employee(firstName, lastName, gender, company, dateOfBirth, size, isForHandicap, licensePlate, type);
     }
 
     public static ParkingBuilder employee(){

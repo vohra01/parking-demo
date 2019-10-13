@@ -25,4 +25,6 @@ public interface ParkingService {
     public String spotMyCar(Long id);
 
     public Employee saveMyCar(Employee employee);
+
+    public Employee getEmployeeByUser(Long id);
 }

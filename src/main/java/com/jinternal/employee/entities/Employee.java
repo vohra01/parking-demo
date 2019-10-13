@@ -27,7 +27,7 @@ public class Employee {
     private String lastName;
     @Enumerated(STRING)
     private Gender gender;
-    private String department;
+    private String company;
     private LocalDate dateOfBirth;
 
     @Enumerated(STRING)
@@ -41,11 +41,11 @@ public class Employee {
     //private boolean hasHandicapParkingPermit;
 
 
-    public Employee(String firstName, String lastName, Gender gender, String department, LocalDate dateOfBirth, Size size, boolean isForHandicap, String licensePlate, VehicleType type) {
+    public Employee(String firstName, String lastName, Gender gender, String company, LocalDate dateOfBirth, Size size, boolean isForHandicap, String licensePlate, VehicleType type) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
-        this.department = department;
+        this.company = company;
         this.dateOfBirth = dateOfBirth;
         this.size = size;
        this.isForHandicap = isForHandicap;

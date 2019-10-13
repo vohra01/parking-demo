@@ -75,15 +75,15 @@
       </div>
 
       <div class="form-group">
-        <label for="department">Department : </label>
+        <label for="company">Company : </label>
         <div class="input-group">
-          <input id="department"
+          <input id="company"
                  class="form-control"
-                 placeholder="Enter Department"
-                 name="department"
-                 [formControl]="employeeForm.controls['department']" >
-            <div *ngIf="department.invalid && (department.dirty || department.touched)" class="invalid-feedback">
-              Please enter department.
+                 placeholder="Enter Company Name"
+                 name="company"
+                 [formControl]="employeeForm.controls['company']" >
+            <div *ngIf="company.invalid && (company.dirty || company.touched)" class="invalid-feedback">
+              Please enter Company name.
             </div>
         </div>
       </div>
@@ -121,10 +121,10 @@
       </div>
 
 
-      <div class="modal-footer">
+      <div class="modal-footer" >
         <div class="col-lg-8">
-          <div class="col-lg-10" style="float: right; margin-top: 5px;">Specially Abled Parking</div>
-          <input type="checkbox"
+          <div class="col-lg-10" style="float: right; margin-top: 5px; display: none">Specially Abled Parking</div>
+          <input style="display: none" type="checkbox"
                  id="forHandicap"
                  class="form-control col-lg-2"
                  name="forHandicap"
