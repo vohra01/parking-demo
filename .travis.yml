@@ -29,8 +29,7 @@ addons:
 script:
   - ./mvnw spring-boot:run
   - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
-  - - npm run lint:ci
-    - npm run build:prod
+  - - ng serve --open --proxy-config proxy.conf.json
 
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
