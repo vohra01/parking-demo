@@ -1,0 +1,146 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="register-employee">Register Vehicle</h4>
+  </div>
+
+  <div class="modal-body ">
+    <div *ngIf="!saving" class="">
+      <form [formGroup]="employeeForm" (ngSubmit)="onSubmit(employeeForm.value)">
+
+        <div class="form-group">
+          <label for="dateOfBirth">First Name : </label>
+          <div class="input-group">
+            <input id="firstName"
+                   class="form-control"
+                   placeholder="Kunal"
+                   name="firstName"
+                   [formControl]="employeeForm.controls['firstName']">
+            <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="invalid-feedback">
+              Please enter first name.
+            </div>
+          </div>
+        </div>
+
+      <div class="form-group">
+        <label for="dateOfBirth">Last Name : </label>
+        <div class="input-group">
+          <input id="lastName"
+                 class="form-control"
+                 placeholder="Vohra"
+                 name="lastName"
+                 [formControl]="employeeForm.controls['lastName']">
+          <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="invalid-feedback">
+            Please enter last name.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+          <select  id="gender" class="form-control" placeholder="Gender" name="gender"  [formControl]="employeeForm.controls['gender']" >
+            <option disabled [selected]="true">Select</option>
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+            <option value="NA">Prefer Not To Mention</option>
+          </select>
+        <div *ngIf="gender.invalid && (gender.dirty || gender.touched)" class="invalid-feedback">
+          Please select gender.
+        </div>
+      </div>
+
+        <div class="form-group">
+        <label for="size">Size</label>
+          <select  id="size" class="form-control" placeholder="Size" name="size"  [formControl]="employeeForm.controls['size']" >
+            <option disabled [selected]="true">Select</option>
+            <option value="SMALL" >Small</option>
+            <option value="MEDIUM">Medium</option>
+            <option value="LARGE">Large</option>
+          </select>
+        <div *ngIf="size.invalid && (size.dirty || size.touched)" class="invalid-feedback">
+          Please select size.
+        </div>
+      </div>
+
+        <div class="form-group">
+        <label for="type">Vehicle Type</label>
+          <select  id="type" class="form-control" placeholder="Vehicle Type" name="type"  [formControl]="employeeForm.controls['type']" >
+            <option disabled [selected]="true">Select</option>
+            <option value="BIKE">Bike</option>
+            <option value="CAR">Car</option>
+            <option value="BUS">Bus</option>
+          </select>
+        <div *ngIf="type.invalid && (type.dirty || type.touched)" class="invalid-feedback">
+          Please select type.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="department">Department : </label>
+        <div class="input-group">
+          <input id="department"
+                 class="form-control"
+                 placeholder="Enter Department"
+                 name="department"
+                 [formControl]="employeeForm.controls['department']" >
+            <div *ngIf="department.invalid && (department.dirty || department.touched)" class="invalid-feedback">
+              Please enter department.
+            </div>
+        </div>
+      </div>
+
+        <div class="form-group">
+        <label for="licensePlate">Licence Plate : </label>
+        <div class="input-group">
+          <input id="licensePlate"
+                 class="form-control"
+                 placeholder="MH 12 MX 0734"
+                 name="licensePlate"
+                 [formControl]="employeeForm.controls['licensePlate']" >
+            <div *ngIf="licensePlate.invalid && (licensePlate.dirty || licensePlate.touched)" class="invalid-feedback">
+              Please enter valid plate #.
+            </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dateOfBirth">Parking Date : </label>
+        <div class="input-group">
+          <input id="dateOfBirth"
+                 class="form-control"
+                 placeholder="DD/MM/YYYY"
+                 name="dateOfBirth"
+                 [formControl]="employeeForm.controls['dateOfBirth']">
+
+          <div *ngIf="dateOfBirth.hasError('invalidDate') && (dateOfBirth.dirty || dateOfBirth.touched)" class="invalid-feedback">
+            Please enter a valid date.
+          </div>
+          <div *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched) && !dateOfBirth.hasError('invalidDate')" class="invalid-feedback">
+            Please enter date.
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal-footer">
+        <div class="col-lg-8">
+          <div class="col-lg-10" style="float: right; margin-top: 5px;">Specially Abled Parking</div>
+          <input type="checkbox"
+                 id="forHandicap"
+                 class="form-control col-lg-2"
+                 name="forHandicap"
+                 [formControl]="employeeForm.controls['forHandicap']">
+        </div>
+        <button type="submit" class="btn btn-outline-dark"  (click)="onCancel()">Cancel</button>
+        <button type="submit" class="btn btn-outline-success"  [disabled]="!employeeForm.valid">Save</button>
+      </div>
+    </form>
+    </div>
+    <div *ngIf="saving" class="loader loading-image"></div>
+  </div>
+</ng-template>
+
+
+<div class="btn btn-primary" style="cursor: pointer" (click)="open(content)" title="Register Vehicle" alt="Register Employee">+</div>
+
+
+

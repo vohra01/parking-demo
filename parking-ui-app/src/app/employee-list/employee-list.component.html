@@ -1,0 +1,58 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Licence Plate</th>
+        <th>Vehicle type</th>
+        <th>Parking Size</th>
+        <th>Date</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of employees">
+        <td>{{employee.firstName + ' ' + employee.lastName}}</td>
+        <td>{{employee.gender==='NA'? 'Prefer Not To Mention': employee.gender}}</td>
+        <td>{{employee.licensePlate}}</td>
+        <td>{{employee.type}}</td>
+        <td>{{employee.size}}</td>
+        <td>{{employee.dateOfBirth}}</td>
+        <td>
+            <div class="col-lg-12">
+
+                <div class="">
+                    <button type="button" class="btn btn-info" title="Find Parking" (click)='findMethod(employee.id)'
+                            data-dismiss="modal">
+                        Find
+                    </button>
+                    &nbsp;
+                    <button type="button" class="btn btn-danger" title="Exit Parking"
+                            (click)='deleteMethod(employee.id)' data-dismiss="modal">
+                        Exit
+                    </button>
+                </div>
+
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<div *ngIf="employees.length ==0" class="invalid-feedback badge">
+    <h4 style="color: peru">
+        <p>Welcome to PearchedPeaCock Parking Service!!!</p>
+    </h4>
+</div>
+
+<div *ngIf="employees.length <=6  && employees.length !=0" class="invalid-feedback badge">
+    <h4>
+        <p>{{carFound}}</p>
+        <p>Thank you For Checking In!!!</p>
+    </h4>
+</div>
+
+<div *ngIf="employees.length ==6 && employees.length !=0" class="invalid-feedback badge">
+    <h3>Parking is Full. Thank you!!!</h3>
+</div>

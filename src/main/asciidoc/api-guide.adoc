@@ -1,0 +1,163 @@
+= Employee Service Docs
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+
+[[authors]]
+==== Authors
+Kunal Vohra
+
+[[overview]]
+= Overview
+
+[[overview-http-verbs]]
+== HTTP verbs
+
+HTTP Methods for RESTful Services, use HTTP methods to map CRUD (create, retrieve, update, delete) operations to HTTP requests.
+
+
+|===
+| Verb | Usage
+
+| `GET`
+| Used to retrieve a resource
+
+| `POST`
+| Used to create a new resource
+
+| `PUT`
+| Used to update an existing resource, entire object updates
+
+| `PATCH`
+| Used to update an existing resource, including partial updates
+
+| `DELETE`
+| Used to delete an existing resource
+|===
+
+[[overview-http-status-codes]]
+== HTTP Status Codes
+
+Status codes indicate the result of the HTTP request.
+|===
+| 1XX - informational | 2XX - success | 3XX - redirection | 4XX - client error | 5XX - server error
+|===
+
+|===
+| Status code | Usage
+
+| `200 OK`
+| The request completed successfully
+
+| `201 Created`
+| A new resource has been created successfully. The resource's URI is available from the response's
+`Location` header
+
+| `204 No Content`
+| An update to an existing resource has been applied successfully
+
+| `400 Bad Request`
+| The request was malformed. The response body will include an error providing further information
+
+| `404 Not Found`
+| The requested resource did not exist
+
+| `409 Conflict`
+| If resource already exists
+
+| `405 Method Not Allowed`
+| The http method is not allowed
+|===
+
+
+[[overview-http-media-types]]
+= Media types
+
+The *Accept* and *Content-Type* HTTP headers can be used to describe the content being sent or requested within an HTTP request.
+The client may set *Accept* to *application/json* if it is requesting a response in JSON. Conversely, when sending data, setting
+the *Content-Type* to *application/xml* tells the client that the data being sent in the request is XML.
+
+
+
+This is an example output for a service running at http://localhost:8081:
+
+== Register Employee
+=== `POST /api/employee`
+
+==== Path parameters
+include::{snippets}/save-employee/path-parameters.adoc[]
+
+==== Request fields
+include::{snippets}/save-employee/request-fields.adoc[]
+
+==== Request
+include::{snippets}/save-employee/http-request.adoc[]
+
+==== Response
+include::{snippets}/save-employee/http-response.adoc[]
+
+==== Curl request
+include::{snippets}/save-employee/curl-request.adoc[]
+
+
+[cols="h,5a"]
+|===
+| Success
+| include::{snippets}/save-employee/http-response.adoc[][lines=3]
+|===
+
+== Update Employee
+=== `POST /api/employee`
+
+==== Path parameters
+include::{snippets}/update-employee/path-parameters.adoc[]
+
+==== Request fields
+include::{snippets}/update-employee/request-fields.adoc[]
+
+==== Request
+include::{snippets}/update-employee/http-request.adoc[]
+
+==== Response
+include::{snippets}/update-employee/http-response.adoc[]
+
+==== Curl request
+include::{snippets}/update-employee/curl-request.adoc[]
+
+
+[cols="h,5a"]
+|===
+| Success
+| include::{snippets}/update-employee/http-response.adoc[][lines=3]
+|===
+
+== Get All Employee
+=== `POST /api/employee`
+
+==== Path parameters
+include::{snippets}/get-all-employee/path-parameters.adoc[]
+
+==== Request fields
+include::{snippets}/get-all-employee/request-fields.adoc[]
+
+==== Request
+include::{snippets}/get-all-employee/http-request.adoc[]
+
+==== Response
+include::{snippets}/get-all-employee/http-response.adoc[]
+
+==== Curl request
+include::{snippets}/get-all-employee/curl-request.adoc[]
+
+
+[cols="h,5a"]
+|===
+| Success
+| include::{snippets}/get-all-employee/http-response.adoc[][lines=3]
+|===
+
+As you can see the format is very simple, and in fact you always get the same message.
