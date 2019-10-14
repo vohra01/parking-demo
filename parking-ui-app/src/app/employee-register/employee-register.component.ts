@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {EmployeeService} from "../services/employee.service";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'employee-register',
@@ -9,8 +10,13 @@ import {EmployeeService} from "../services/employee.service";
   styleUrls: ['./employee-register.component.css']
 })
 
+
 export class EmployeeRegisterComponent   {
+
+  @Input() employee: Employee;
+
   employeeForm: FormGroup;
+  userForm: FormGroup;
   model: NgbModalRef;
   saving: boolean;
 
@@ -30,6 +36,9 @@ export class EmployeeRegisterComponent   {
                                                         this.dateValidator
         ])],
     });
+    this.userForm = fb.group({
+      'userId':['',Validators.compose([Validators.required])],
+    });
 
   }
 
@@ -42,6 +51,8 @@ export class EmployeeRegisterComponent   {
   get type() { return this.employeeForm.get('type'); }
   get licensePlate() { return this.employeeForm.get('licensePlate'); }
   get forHandicap() { return this.employeeForm.get('forHandicap'); }
+
+  get userId() { return this.userForm.get('userId'); }
 
   open(content) {
     this.model = this.modalService.open(content, {ariaLabelledBy: 'register-employee'});
@@ -56,6 +67,16 @@ export class EmployeeRegisterComponent   {
     this.employeeService.registerEmployee(employee).subscribe(value => {
       this.resetForm();
       this.employeeService.reloadMainList().emit(value);
+
+    })
+  }
+
+  onUserSubmit(id: String): void {
+    this.saving = false;
+    this.employeeService.getEmployee(id).subscribe(value => {
+      //this.saving = false;
+      console.log(value.firstName);
+      //this.employeeService.reloadMainList().emit(value);
 
     })
   }

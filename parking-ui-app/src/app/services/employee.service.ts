@@ -31,6 +31,22 @@ export class EmployeeService {
             );
     }
 
+
+    public getEmployee(id: String): Observable<Employee> {
+        console.log("Employee Info Request");
+         var url = '/api/employee/1';
+      //url =url.replace('[object Object]', id.toString);
+        //return this.httpClient.get<Employee>(url);
+      return this.httpClient.get<Employee>(url)
+        .pipe(
+          catchError((error: HttpErrorResponse) => {
+            console.log("No Information Available for User {}", id);
+            return throwError(error);
+          })
+        );
+    }
+
+
     public reloadMainList() {
         return this.refresh
     }

@@ -121,10 +121,10 @@
       </div>
 
 
-      <div class="modal-footer" >
+      <div class="modal-footer">
         <div class="col-lg-8">
-          <div class="col-lg-10" style="float: right; margin-top: 5px; display: none">Specially Abled Parking</div>
-          <input style="display: none" type="checkbox"
+          <div class="col-lg-10" style="float: right; margin-top: 5px;">Specially Abled Parking</div>
+          <input type="checkbox"
                  id="forHandicap"
                  class="form-control col-lg-2"
                  name="forHandicap"
@@ -139,8 +139,47 @@
   </div>
 </ng-template>
 
+<ng-template #content2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="user-employee2">Register Vehicle</h4>
+  </div>
 
-<div class="btn btn-primary" style="cursor: pointer" (click)="open(content)" title="Register Vehicle" alt="Register Employee">+</div>
+  <div class="modal-body ">
+    <div *ngIf="!saving" class="">
+      <form [formGroup]="userForm" (ngSubmit)="onUserSubmit(userForm.value)">
+
+
+        <div class="form-group">
+          <label for="userId">User ID : </label>
+          <div class="input-group">
+            <input id="userId"
+                   class="form-control"
+                   placeholder="Enter Company User ID Name"
+                   name="userId"
+                   [formControl]="userForm.controls['userId']" >
+            <div *ngIf="userId.invalid && (userId.dirty || userId.touched)" class="invalid-feedback">
+              Please enter Company name.
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-outline-success"  [disabled]="!userForm.valid">Find</button>
+        </div>
+      </form>
+    </div>
+
+
+
+    <div *ngIf="saving" class="loader loading-image"></div>
+  </div>
+</ng-template>
+
+
+
+
+<div class="btn btn-danger" style="cursor: pointer" (click)="open(content)" title="Register Vehicle" alt="Register Employee">Visitor</div>
+&nbsp;
+<div class="btn btn-primary" style="cursor: pointer" (click)="open(content2)" title="Register Vehicle" alt="Register Employee">Employee</div>
 
 
 
