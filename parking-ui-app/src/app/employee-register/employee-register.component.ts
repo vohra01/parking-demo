@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component} from '@angular/core';
+import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {EmployeeService} from "../services/employee.service";
 
 @Component({
@@ -13,6 +13,7 @@ export class EmployeeRegisterComponent   {
   employeeForm: FormGroup;
   model: NgbModalRef;
   saving: boolean;
+  date: String = this.getNowDate();
 
   constructor(private modalService: NgbModal,private fb: FormBuilder,private employeeService : EmployeeService) {
 
@@ -25,7 +26,7 @@ export class EmployeeRegisterComponent   {
       'licensePlate': ['',Validators.compose([Validators.pattern('^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$')])],
       'company': ['',Validators.compose([Validators.required])],
       'forHandicap': ['false',Validators.compose([])],
-      'dateOfBirth': ['',Validators.compose([ Validators.required,
+      'parkingDate': ['',Validators.compose([ Validators.required,
                                                         Validators.pattern('^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3})$'),
                                                         this.dateValidator
         ])],
@@ -37,7 +38,7 @@ export class EmployeeRegisterComponent   {
   get lastName() { return this.employeeForm.get('lastName'); }
   get gender() { return this.employeeForm.get('gender'); }
   get company() { return this.employeeForm.get('company'); }
-  get dateOfBirth() { return this.employeeForm.get('dateOfBirth'); }
+  get parkingDate() { return this.employeeForm.get('parkingDate'); }
   get size() { return this.employeeForm.get('size'); }
   get type() { return this.employeeForm.get('type'); }
   get licensePlate() { return this.employeeForm.get('licensePlate'); }
@@ -65,6 +66,7 @@ export class EmployeeRegisterComponent   {
     this.employeeForm.reset();
     this.model.close();
     this.model = null;
+    this.date=this.getNowDate();
   }
 
   public dateValidator(control: FormControl): { [s: string]: boolean } {
@@ -84,5 +86,25 @@ export class EmployeeRegisterComponent   {
     }
   }
 
+  getNowDate() {
+    var returnDate = "";
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //because January is 0!
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+      returnDate += `0${dd}/`;
+    } else {
+      returnDate += `${dd}/`;
+    }
+
+    if (mm < 10) {
+      returnDate += `0${mm}/`;
+    } else {
+      returnDate += `${mm}/`;
+    }
+    returnDate += yyyy;
+    return returnDate;
+  }
 
 }

@@ -3,7 +3,7 @@ interface Employee {
   firstName: string;
   lastName: string;
   gender: string;
-  dateOfBirth: string;
+  parkingDate: string;
   company: string;
   size: string;
   licensePlate: string;

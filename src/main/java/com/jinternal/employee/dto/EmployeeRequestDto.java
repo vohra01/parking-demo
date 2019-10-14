@@ -39,7 +39,7 @@ public class EmployeeRequestDto {
     private String company;
 
     @NotNull
-    private String dateOfBirth;
+    private String parkingDate;
 
     // Vehicle Info
 
@@ -58,7 +58,7 @@ public class EmployeeRequestDto {
                 .withLastName(requestDto.lastName)
                 .withGender(com.jinternal.employee.entities.Gender.valueOf(requestDto.gender))
                 .withDepartment(requestDto.company)
-                .withDateOfBirth(parse(requestDto.dateOfBirth, DATE_FORMATTER))
+                .withParkingDate(parse(requestDto.parkingDate, DATE_FORMATTER))
                 .withSize(com.jinternal.employee.enums.enums.Size.valueOf(requestDto.size))
                 .withForHandicap(requestDto.isForHandicap)
                 .withLicensePlate(requestDto.licensePlate)
@@ -73,7 +73,7 @@ public class EmployeeRequestDto {
         employeeRequestDto.setFirstName(employee.getFirstName());
         employeeRequestDto.setLastName(employee.getLastName());
         employeeRequestDto.setCompany(employee.getCompany());
-        employeeRequestDto.setDateOfBirth(employee.getDateOfBirth().format(DATE_FORMATTER));
+        employeeRequestDto.setParkingDate(employee.getParkingDate().format(DATE_FORMATTER));
         employeeRequestDto.setGender(employee.getGender().toString());
         employeeRequestDto.setSize(employee.getSize().name());
         employeeRequestDto.setType(employee.getType().name());

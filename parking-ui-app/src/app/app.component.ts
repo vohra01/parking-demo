@@ -11,6 +11,7 @@ export class AppComponent implements OnInit{
 
   page: Page;
   loading: boolean;
+  date:String
 
   constructor(private employeeService : EmployeeService){}
 

@@ -7,6 +7,7 @@ import com.jinternal.employee.exception.RestException;
 import com.jinternal.employee.exception.ServiceException;
 import com.jinternal.employee.services.ParkingService;
 import io.swagger.annotations.ApiResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -20,6 +21,7 @@ import static com.jinternal.employee.dto.ParkingResponseDto.toResponse;
 
 @RestController
 @RequestMapping("/api")
+@Slf4j
 public class ParkingController {
 
     private ParkingService parkingService;
@@ -57,14 +59,13 @@ public class ParkingController {
         } catch (ServiceException e) {
             throw new RestException(e);
         }
-
     }
 
     @DeleteMapping()
     public boolean deleteEmployee(@RequestParam("id") long id) throws ServiceException {
         System.out.println("Came To Delete You");
         Employee employee = parkingService.getEmployee(id);
-        //employee.setId(id);
+        log.info("Deleted car {}",id);
         return parkingService.removeEmployee(employee);
     }
 
@@ -74,9 +75,8 @@ public class ParkingController {
     public Employee delete(@PathVariable("id") int id) throws ServiceException {
         System.out.println("Came To Delete You");
         Employee employee = parkingService.getEmployee(new Long(id));
-        //employee.setId(id);
         parkingService.removeEmployee(employee);
-        System.out.println("Deleted You");
+        log.info("Deleted car {}",id);
         return new Employee();
     }
 
@@ -101,8 +101,6 @@ public class ParkingController {
         Employee employee = parkingService.saveEmployee(fromRequest(employeeRequestDto));
         return toResponse(employee);
     }
-
-
 
     private PageImpl<ParkingResponseDto> toPageResponse(Pageable pageable, Page<Employee> employee) {
         return new PageImpl(toResponse(employee.getContent()), pageable, employee.getTotalElements());

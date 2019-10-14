@@ -25,7 +25,7 @@ public class ParkingTestUtils {
                 .withLastName(lastName)
                 .withGender(Gender.MALE)
                 .withDepartment("Some-company")
-                .withDateOfBirth(now().minusYears(29))
+                .withParkingDate(now().minusYears(29))
                 .withSize(Size.MEDIUM)
                 .withType(VehicleType.CAR)
                 .withLicensePlate("MH12MX-0734")

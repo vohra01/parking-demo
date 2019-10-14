@@ -8,10 +8,10 @@ CREATE TABLE `employee` (
   `type` varchar(255),
   `size` varchar(255),
   `license_plate` varchar(255),
-  `date_of_birth` date,
+  `parking_date` date,
   `is_for_handicap` bit,
    primary key (`id`)
   );
 
 
-INSERT INTO employee VALUES (1,'Kunal', 'Vohra', 'MALE','SG','CAR','SMALL','MH 12 MX 0734', null, false );
+INSERT INTO employee VALUES (1,'Kunal', 'Vohra', 'MALE','SG','CAR','SMALL','MH 12 MX 0734', CAST(GETDATE() as date), false );

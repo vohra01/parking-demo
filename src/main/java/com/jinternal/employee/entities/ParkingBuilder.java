@@ -11,7 +11,7 @@ public class ParkingBuilder {
     private String lastName;
     private Gender gender;
     private String company;
-    private LocalDate dateOfBirth;
+    private LocalDate parkingDate;
     private Size size;
     private boolean isForHandicap;
     private String licensePlate;
@@ -37,8 +37,8 @@ public class ParkingBuilder {
         return this;
     }
 
-    public ParkingBuilder withDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public ParkingBuilder withParkingDate(LocalDate parkingDate) {
+        this.parkingDate = parkingDate;
         return this;
     }
 
@@ -63,7 +63,7 @@ public class ParkingBuilder {
     }
 
     public Employee build() {
-        return new Employee(firstName, lastName, gender, company, dateOfBirth, size, isForHandicap, licensePlate, type);
+        return new Employee(firstName, lastName, gender, company, parkingDate, size, isForHandicap, licensePlate, type);
     }
 
     public static ParkingBuilder employee(){

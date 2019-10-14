@@ -31,7 +31,7 @@ public class ParkingServiceTest {
 
     @Test
     public void shouldSaveEmployee() {
-        when(parkingRepository.save(Mockito.any())).thenReturn(ParkingTestUtils.aVehicle("Mradul","Pandey"));
+        when(parkingRepository.save(Mockito.any())).thenReturn(ParkingTestUtils.aVehicle("Kunal","Vohra"));
         parkingService.saveEmployee(ParkingTestUtils.aVehicle("Kunal","Vohra"));
         Mockito.verify(parkingRepository).save(ParkingTestUtils.aVehicle("Kunal","Vohra"));
     }

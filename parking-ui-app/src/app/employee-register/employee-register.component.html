@@ -8,7 +8,7 @@
       <form [formGroup]="employeeForm" (ngSubmit)="onSubmit(employeeForm.value)">
 
         <div class="form-group">
-          <label for="dateOfBirth">First Name : </label>
+          <label for="parkingDate">First Name : </label>
           <div class="input-group">
             <input id="firstName"
                    class="form-control"
@@ -22,7 +22,7 @@
         </div>
 
       <div class="form-group">
-        <label for="dateOfBirth">Last Name : </label>
+        <label for="parkingDate">Last Name : </label>
         <div class="input-group">
           <input id="lastName"
                  class="form-control"
@@ -102,19 +102,20 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="dateOfBirth">Parking Date : </label>
+      <div class="form-group" style="display: none">
+        <label for="parkingDate">Parking Date : </label>
         <div class="input-group">
-          <input id="dateOfBirth"
+          <input id="parkingDate"
                  class="form-control"
                  placeholder="DD/MM/YYYY"
-                 name="dateOfBirth"
-                 [formControl]="employeeForm.controls['dateOfBirth']">
+                 name="parkingDate"
+                 [(ngModel)]=date
+                 [formControl]="employeeForm.controls['parkingDate']">
 
-          <div *ngIf="dateOfBirth.hasError('invalidDate') && (dateOfBirth.dirty || dateOfBirth.touched)" class="invalid-feedback">
+          <div *ngIf="parkingDate.hasError('invalidDate') && (parkingDate.dirty || parkingDate.touched)" class="invalid-feedback">
             Please enter a valid date.
           </div>
-          <div *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched) && !dateOfBirth.hasError('invalidDate')" class="invalid-feedback">
+          <div *ngIf="parkingDate.invalid && (parkingDate.dirty || parkingDate.touched) && !parkingDate.hasError('invalidDate')" class="invalid-feedback">
             Please enter date.
           </div>
         </div>

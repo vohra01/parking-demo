@@ -58,9 +58,9 @@ public class ParkingControllerTest {
 
     @Test
     public void shouldRegisterEmployee() throws Exception {
-        EmployeeRequestDto employee = to(ParkingTestUtils.aVehicle("Mradul", "Pandey"));
+        EmployeeRequestDto employee = to(ParkingTestUtils.aVehicle("Kunal", "Vohra"));
 
-        when(parkingService.saveEmployee(Mockito.any())).thenReturn(aVehicle(1L, "Mradul", "Pandey"));
+        when(parkingService.saveMyCar(Mockito.any())).thenReturn(aVehicle(2L, "Kunal", "Vohra"));
 
         String content = toJson(employee);
 
@@ -75,7 +75,7 @@ public class ParkingControllerTest {
                                 fieldWithPath("lastName").description("Employee last name"),
                                 fieldWithPath("gender").description("Employee gender"),
                                 fieldWithPath("company").description("Employee company"),
-                                fieldWithPath("dateOfBirth").description("Employee date of birth"),
+                                fieldWithPath("parkingDate").description("Employee date of birth"),
                                 fieldWithPath("size").description("Employee size"),
                                 fieldWithPath("licensePlate").description("Employee licensePlate"),
                                 fieldWithPath("type").description("Employee type"),
@@ -87,7 +87,7 @@ public class ParkingControllerTest {
                                 fieldWithPath("lastName").description("Employee last name"),
                                 fieldWithPath("gender").description("Employee gender"),
                                 fieldWithPath("company").description("Employee company"),
-                                fieldWithPath("dateOfBirth").description("Employee date of birth"),
+                                fieldWithPath("parkingDate").description("Employee date of birth"),
                                 fieldWithPath("size").description("Employee size"),
                                 fieldWithPath("licensePlate").description("Employee licensePlate"),
                                 fieldWithPath("type").description("Employee type"),
@@ -97,9 +97,9 @@ public class ParkingControllerTest {
 
     @Test
     public void shouldUpdateEmployee() throws Exception {
-        EmployeeRequestDto employee = to(ParkingTestUtils.aVehicle("Mradul", "Pandey"));
+        EmployeeRequestDto employee = to(ParkingTestUtils.aVehicle("Kunal", "Vohra"));
 
-        when(parkingService.updateEmployee(Mockito.any())).thenReturn(aVehicle(1L, "mradul", "pandey"));
+        when(parkingService.updateEmployee(Mockito.any())).thenReturn(aVehicle(1L, "Kunal", "Vohra"));
 
         String content = toJson(employee);
         mockMvc.perform(put("/api/employee/{id}",1L)
@@ -115,7 +115,7 @@ public class ParkingControllerTest {
                                 fieldWithPath("lastName").description("Employee last name"),
                                 fieldWithPath("gender").description("Employee gender"),
                                 fieldWithPath("company").description("Employee company"),
-                                fieldWithPath("dateOfBirth").description("Employee date of birth"),
+                                fieldWithPath("parkingDate").description("Employee date of birth"),
                                 fieldWithPath("size").description("Employee size"),
                                 fieldWithPath("licensePlate").description("Employee licensePlate"),
                                 fieldWithPath("type").description("Employee type"),
@@ -128,7 +128,7 @@ public class ParkingControllerTest {
                                 fieldWithPath("lastName").description("Employee last name"),
                                 fieldWithPath("gender").description("Employee gender"),
                                 fieldWithPath("company").description("Employee company"),
-                                fieldWithPath("dateOfBirth").description("Employee date of birth"),
+                                fieldWithPath("parkingDate").description("Employee date of birth"),
                                 fieldWithPath("size").description("Employee size"),
                                 fieldWithPath("licensePlate").description("Employee licensePlate"),
                                 fieldWithPath("type").description("Employee type"),
@@ -139,9 +139,9 @@ public class ParkingControllerTest {
 
     @Test
     public void shouldGetAllTheEmployee() throws Exception {
-        EmployeeRequestDto employee = to(ParkingTestUtils.aVehicle("Mradul", "Pandey"));
+        EmployeeRequestDto employee = to(ParkingTestUtils.aVehicle("Kunal", "Vohra"));
 
-        Page<Employee> employeePage = new PageImpl(asList(aVehicle(1L,"Mradul", "Pandey")), of(0,10, Sort.by(ASC,"id")), 1);
+        Page<Employee> employeePage = new PageImpl(asList(aVehicle(1L,"Kunal", "Vohra")), of(0,10, Sort.by(ASC,"id")), 1);
 
         when(parkingService.getAllEmployee(Mockito.any())).thenReturn(employeePage);
 
@@ -156,7 +156,7 @@ public class ParkingControllerTest {
                                 fieldWithPath("content.[0].lastName").description("Employee last name"),
                                 fieldWithPath("content.[0].gender").description("Employee gender"),
                                 fieldWithPath("content.[0].company").description("Employee company"),
-                                fieldWithPath("content.[0].dateOfBirth").description("Employee date of birth"),
+                                fieldWithPath("content.[0].parkingDate").description("Employee date of birth"),
                                 fieldWithPath("content.[0].size").description("Employee licensePlate"),
                                 fieldWithPath("content.[0].type").description("Employee type"),
                                 fieldWithPath("content.[0].licensePlate").description("Employee size"),

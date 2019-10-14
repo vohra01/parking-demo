@@ -31,7 +31,7 @@ public class ParkingRepositoryTest {
     @Test
     public void shouldFindSavedEmployeeById() {
         // given
-        Employee employee = ParkingTestUtils.aVehicle("mradul","pandey");
+        Employee employee = ParkingTestUtils.aVehicle("Kunal","Vohra");
         entityManager.persist(employee);
         entityManager.flush();
 
@@ -46,13 +46,13 @@ public class ParkingRepositoryTest {
         assertThat(found.getLastName()).isEqualTo(employee.getLastName());
         assertThat(found.getGender()).isEqualTo(employee.getGender());
         assertThat(found.getCompany()).isEqualTo(employee.getCompany());
-        assertThat(found.getDateOfBirth()).isEqualTo(employee.getDateOfBirth());
+        assertThat(found.getParkingDate()).isEqualTo(employee.getParkingDate());
     }
 
     @Test
     public void shouldFindAllTheEmployeeInPagedForm() {
         // given
-        Employee employee1 = ParkingTestUtils.aVehicle("mradul","pandey");
+        Employee employee1 = ParkingTestUtils.aVehicle("Kunal","Vohra");
         Employee employee2 = ParkingTestUtils.aVehicle("mayank","pandey");
         entityManager.persist(employee1);
         entityManager.persist(employee2);
@@ -65,12 +65,37 @@ public class ParkingRepositoryTest {
 
         assertThat(found).isNotNull();
 
-        assertThat(found.getTotalElements()).isEqualTo(2);
+        assertThat(found.getTotalElements()).isEqualTo(3);
         assertThat(found.getTotalPages()).isEqualTo(1);
         assertThat(found.getNumber()).isEqualTo(0);
-        assertThat(found.getContent().size()).isEqualTo(2);
+        assertThat(found.getContent().size()).isEqualTo(3);
     }
 
 
+    @Test
+    public void shouldFindSavedEmployeeByIdCustomQuery() {
+        // given
+        Employee employee = ParkingTestUtils.aVehicle("Kunal","Vohra");
+        entityManager.persist(employee);
+        entityManager.flush();
+
+        // when
+        Employee found = parkingRepository.findOne(employee.getId());
+
+        // then
+
+        assertThat(found).isNotNull();
+
+        assertThat(found.getFirstName()).isEqualTo(employee.getFirstName());
+        assertThat(found.getLastName()).isEqualTo(employee.getLastName());
+        assertThat(found.getGender()).isEqualTo(employee.getGender());
+        assertThat(found.getCompany()).isEqualTo(employee.getCompany());
+        assertThat(found.getParkingDate()).isEqualTo(employee.getParkingDate());
+    }
+
+    @Test
+    public void shoulNotdFindSavedEmployeeByIdWhenInputNull() {
+        assertThat(parkingRepository.findOne(null)).isNull();
+    }
 
 }

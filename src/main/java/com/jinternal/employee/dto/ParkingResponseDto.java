@@ -26,7 +26,7 @@ public class ParkingResponseDto {
 
     private String company;
 
-    private LocalDate dateOfBirth;
+    private LocalDate parkingDate;
 
     private boolean isForHandicap;
 
@@ -60,7 +60,7 @@ public class ParkingResponseDto {
         parkingResponseDto.setFirstName(employee.getFirstName());
         parkingResponseDto.setLastName(employee.getLastName());
         parkingResponseDto.setCompany(employee.getCompany());
-        parkingResponseDto.setDateOfBirth(employee.getDateOfBirth());
+        parkingResponseDto.setParkingDate(employee.getParkingDate());
         parkingResponseDto.setGender(employee.getGender().toString());
         parkingResponseDto.setSize(employee.getSize());
         parkingResponseDto.setType(employee.getType());
