@@ -25,6 +25,8 @@ Test for ui is not written due to time constraint.
 
 ### Screenshots 
 
+![alt text](./images/Screen-Shot-2019-10-14-at-2.00.34-AM.png)
+
 ![alt text](./images/Screen-Shot-2019-10-13-at-9.37.15-PM.png)
 
 ![alt text](./images/Screen-Shot-2019-10-13-at-9.37.32-PM.png)
