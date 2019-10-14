@@ -94,8 +94,39 @@ public class ParkingRepositoryTest {
     }
 
     @Test
-    public void shoulNotdFindSavedEmployeeByIdWhenInputNull() {
+    public void shouldNotFindSavedEmployeeByIdWhenInputNull() {
         assertThat(parkingRepository.findOne(null)).isNull();
     }
 
+    @Test
+    public void shouldDeleteEmployeeSuccessFullyUsingID() {
+        // given
+        Employee employee = ParkingTestUtils.aVehicle("Kunal","Vohra");
+        entityManager.persist(employee);
+        entityManager.flush();
+
+        // when
+        parkingRepository.deleteById(employee.getId());
+
+        // then
+        Employee found = parkingRepository.findOne(employee.getId());
+
+        assertThat(found).isNull();
+    }
+
+    @Test
+    public void shouldDeleteEmployeeSuccessFully() {
+        // given
+        Employee employee = ParkingTestUtils.aVehicle("Kunal","Vohra");
+        entityManager.persist(employee);
+        entityManager.flush();
+
+        // when
+        parkingRepository.delete(employee);
+
+        // then
+        Employee found = parkingRepository.findOne(employee.getId());
+
+        assertThat(found).isNull();
+    }
 }
